@@ -1,0 +1,44 @@
+@use "sass:color";
+
+@mixin set-vars($variables, $prefix: false, $selector: ":root") {
+  @if ($prefix) {
+    $prefix: $prefix + "-";
+  } @else {
+    $prefix: "";
+  }
+
+  @if ($selector == false) {
+    @each $name, $value in $variables {
+      --#{setting("options", "framework-prefix")}#{$prefix}#{$name}: #{$value};
+    }
+  } @else {
+    #{$selector} {
+      @each $name, $value in $variables {
+        --#{setting("options", "framework-prefix")}#{$prefix}#{$name}: #{$value};
+      }
+    }
+  }
+}
+
+@mixin set-var($name, $value: '', $prefix: "") {
+    @if not ($prefix == "") {
+      $prefix: $prefix + "-";
+    }
+    --#{setting("options", "framework-prefix")}#{$prefix}#{$name}: #{$value};
+}
+
+@function get-var($name, $prefix: "") {
+  @if not ($prefix == "") {
+    $prefix: $prefix + "-";
+  }
+  @return var(--#{setting("options", "framework-prefix")}#{$prefix}#{$name});
+}
+
+@function theme-lightness($color, $diff: 10){
+  @return #{color.adjust($color, $lightness: $diff * 1%)};
+}
+
+@function theme-opaque($color, $diff: 0.5) {
+  //@return #{color.adjust($color, $alpha: $diff)}
+  @return #{transparentize($color, $diff)}
+}

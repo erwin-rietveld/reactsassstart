@@ -1,0 +1,29 @@
+@mixin max($breakpoint) {
+    @media only screen and (max-width: $breakpoint * 1px) {
+        @content;
+    }
+}
+
+@mixin maxheight($breakpoint) {
+    @media only screen and (max-height: $breakpoint * 1px) {
+        @content;
+    }
+}
+
+@mixin min($breakpoint) {
+    @media only screen and (min-width: $breakpoint * 1px) {
+        @content;
+    }
+}
+
+@mixin minheight($breakpoint) {
+    @media only screen and (min-height: $breakpoint * 1px) {
+        @content;
+    }
+}
+
+.dblock--small {
+    @include max(1260) {
+        display: block;
+    }
+}

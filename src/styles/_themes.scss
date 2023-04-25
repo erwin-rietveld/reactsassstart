@@ -1,0 +1,81 @@
+$primary: #2f6d9f;
+$primary-lighten: #{theme-lightness($primary, 10)};
+$primary-darken: #{theme-lightness($primary, -10)};
+$primary-darkest: #{theme-lightness($primary, -30)};
+
+$white: #FFF;
+$black: #111;
+
+$gray-lighter: #e5e5e5;
+$gray-light: #999;
+$gray-dark: #444;
+$gray-darker: #333134;
+
+$warning: #da6b2f;
+$success: #9dab42;
+
+@mixin theme-light() {
+  @include set-vars((
+      color-primary: #{$primary},
+      color-primary-hover: #{$primary-lighten},
+      color-primary-focus: #{$primary-darken},
+      color-primary-active: #{$primary-darken},
+      color-primary-text: #{$white},
+      color-warning: #{$warning},
+      color-warning-text: #{$white},
+      color-success: #{$success},
+      color-success-text: #{$white},
+      body-background: #{$gray-lighter},
+      body-color: #{$gray-darker}
+  ),false,false);
+}
+
+@mixin theme-dark() {
+    @include set-vars((
+        color-primary: #{$primary},
+        color-primary-hover: #{$primary-lighten},
+        color-primary-focus: #{$primary-darken},
+        color-primary-active: #{$primary-darken},
+        color-primary-text: #{$white},
+        color-warning: #{$warning},
+        color-warning-text: #{$white},
+        color-success: #{$success},
+        color-success-text: #{$white},
+        body-background: #{$primary-darkest},
+        body-color: #{$white}
+    ),false,false);
+}
+
+[data-theme] {
+  background-color: get-var(body-background);
+  color: get-var(body-color);
+}
+
+:root, [data-theme="light"] {
+  @include theme-light();
+  [data-theme="inverted"] {
+    @include theme-dark();
+  }
+}
+
+[data-theme="dark"] {
+  @include theme-dark();
+  [data-theme="inverted"] {
+    @include theme-light();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include theme-dark();
+    [data-theme="inverted"] {
+      @include theme-light();
+    }
+    [data-theme="light"] {
+      @include theme-light();
+      [data-theme="inverted"] {
+        @include theme-dark();
+      }
+    }
+  }
+}

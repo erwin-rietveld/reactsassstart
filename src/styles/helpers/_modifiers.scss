@@ -1,0 +1,67 @@
+@mixin on-hover($amp: false) {
+    $sub: if($amp, #{&}, null);
+    &:hover:not(.is--disabled):not(:disabled) #{$sub}{
+        cursor: pointer;
+        @content;
+    }
+}
+
+@mixin on-focus($amp: false) {
+    $sub: if($amp, #{&}, null);
+    &:focus:not(.is--disabled):not(:disabled) #{$sub}{
+        cursor: pointer;
+        @content;
+    }
+}
+
+@mixin on-active($amp: false) {
+    $sub: if($amp, #{&}, null);
+    &:active:not(.is--disabled):not(:disabled) #{$sub}{
+        cursor: pointer;
+        @content;
+    }
+}
+
+@mixin set-disabled() {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@mixin generate-modifier-theming($element: "", $subelement: "") {
+    @if not ($subelement == "") {
+        $subelement: $subelement + "-";
+    }
+    background-color: get-var(#{$element}-#{$subelement}background);
+    color: get-var(#{$element}-#{$subelement}color);
+    border-color: get-var(#{$element}-#{$subelement}border-color);
+    box-shadow: get-var(#{$element}-#{$subelement}box-shadow);
+    @include on-hover() {
+        background-color: get-var(#{$element}-#{$subelement}background-hover);
+        color: get-var(#{$element}-#{$subelement}color-hover);
+        border-color: get-var(#{$element}-#{$subelement}border-color-hover);
+        box-shadow: get-var(#{$element}-#{$subelement}box-shadow-hover);
+    }
+    @include on-focus() {
+        background-color: get-var(#{$element}-#{$subelement}background-focus);
+        color: get-var(#{$element}-#{$subelement}color-focus);
+        border-color: get-var(#{$element}-#{$subelement}border-color-focus);
+        box-shadow: get-var(#{$element}-#{$subelement}box-shadow-focus);
+    }
+    @include on-active() {
+        background-color: get-var(#{$element}-#{$subelement}background-active);
+        color: get-var(#{$element}-#{$subelement}color-active);
+        border-color: get-var(#{$element}-#{$subelement}border-color-active);
+        box-shadow: get-var(#{$element}-#{$subelement}box-shadow-active);
+    }
+}
+
+@mixin page-class($class, $element) {
+    @at-root {
+        body#{$class} {
+            #{$element} {
+                @content;
+            }
+        }
+    }
+}

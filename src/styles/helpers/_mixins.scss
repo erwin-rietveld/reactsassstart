@@ -1,0 +1,46 @@
+@mixin square($size: 100%) {
+    height: $size;
+    width: $size;
+}
+
+@mixin circle($size: 100%) {
+    height: $size;
+    width: $size;
+    border-radius: $size;
+}
+
+@mixin center($position: top 50% left 50%) {
+    @include absolute($position);
+    transform: translateY(-50%) translateX(-50%);
+}
+
+@mixin center-vertical($position: top 50% left 0) {
+    @include absolute($position);
+    transform: translateY(-50%);
+}
+
+@mixin span-block() {
+    display: block;
+    font-size: 1px;
+    line-height: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin span-border($position: top 0 left 0, $height: true) {
+    @include absolute($position);
+    @include span-block();
+    @if $height {
+        height: 100%;
+        width: get-var(border-width);
+    } @else {
+        width: 100%;
+        height: get-var(border-width);
+    }
+}
+
+@mixin no-select() {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}

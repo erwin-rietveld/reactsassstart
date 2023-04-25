@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+    <title> </title>
+
+    <meta name='keywords' content=''>
+    <meta name='description' content=''>
+    <meta name='subject' content=''>
+    <meta name='copyright' content='Erwin Rietveld'>
+    <meta name="application-name" content="">
+    <meta name='language' content='nl'>
+
+    <meta name="msapplication-TileColor" content="#338a8d">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#338a8d">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Erwin Rietveld">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+      @keyframes loader-animation-holder {
+        from { transform: rotate(0);}
+        to { transform: rotate(360deg);}
+      }
+      @keyframes loader-animation {
+        from { transform: rotate(0);}
+        to { transform: rotate(360deg);}
+      }
+      .loader {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        margin-left: -15px;
+        margin-top: -15px;
+      }
+      .loader > span {
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+      }
+      .loader > span > span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid transparent;
+        border-right-color: #FFFFFF;
+        border-radius: 100px;
+        animation: loader-animation 1000ms ease-in-out forwards infinite;
+      }
+      body {
+        background-color: #271934;
+        color: #efedd3;
+      }
+      .loader > span {
+        border-right-color: #efedd3;
+      }
+      #warningText {
+        display: none;
+        text-align: center;
+        font-family: arial, sans-serif;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loader"><span><span></span></span></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <noscript>
+      <style>
+        .loader {
+          display: none;
+        }
+        #warningText {
+          display: block;
+        }
+      </style>
+      <p id="warningText">Please enable Javascript to view this website.</p>
+    </noscript>
+  </body>
+</html>

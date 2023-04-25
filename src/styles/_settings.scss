@@ -1,0 +1,66 @@
+@use "sass:meta";
+
+$settings: (
+    "fonts": (
+        "default": ("DM Serif Display Italic", Georgia, Times, "serif"),
+        "headings": ("DM Serif Display Italic", Georgia, Times, "serif"),
+        "projecttitles": ("Noto Sans Black", "Open Sans", Arial, Verdana, "sans-serif"),
+        "texts": ("Noto Sans", "Open Sans", Arial, Verdana, "sans-serif"),
+        "input": ("DM Serif Display Regular", Verdana, Arial, "sans-serif"),
+        "labels": ("Courier Prime", Verdana, Arial, "sans-serif"),
+    ),
+    "modifiers": (
+        "active": ".is--active",
+        "loading": ".is--loading",
+        "loadingcompleted": ".is--done",
+        "disabled": ".is--disabled",
+        "failed": ".is--failed",
+        "warning": ".has--warning",
+        "new": ".is--new",
+        "required": ".is--required",
+        "hidden": ".is--hidden",
+    ),
+    "options": (
+        "framework-prefix": "er-",
+        "button-pushdown": true
+    ),
+    "z-index": (
+        "menu": 99,
+        "transition": 100,
+        "cursor": 1000,
+        "pagetransitions": 1001
+    ),
+    "breakpoints": (
+        "mobile": 600,
+        "tablet": 860,
+        "desktop": 1280,
+        "widescreen": 1440,
+        "superscreen": 1720
+    )
+);
+
+$assets: "../assets/images/";
+
+:root {
+    --er-font-family: #{meta.inspect(map-deep-get($settings, "fonts", "default"))};
+    --er-font-family-labels: #{meta.inspect(map-deep-get($settings, "fonts", "labels"))};
+    --er-font-family-headings: #{meta.inspect(map-deep-get($settings, "fonts", "headings"))};
+    --er-font-family-projecttitles: #{meta.inspect(map-deep-get($settings, "fonts", "projecttitles"))};
+    --er-font-family-texts: #{meta.inspect(map-deep-get($settings, "fonts", "texts"))};
+    --er-font-size: 20px;
+    --er-line-height: 1.3;
+    --er-border-width: 2px;
+    --er-easing-default: cubic-bezier(0.87, 0, 0.13, 1);
+    --er-easing-hover: cubic-bezier(0.68, 0, 0.465, 1);
+    --er-easing-click: cubic-bezier(.01,.99,0,.99);
+    --er-easing-special: cubic-bezier(0.68, -0.55, 0.265, 2);
+    --er-scrollbar-size: .5rem;
+    --er-scrollbar-minlength: 1.5rem;
+    --er-scrollbar-ff-width: thin;
+    --er-scrollbar-track-color: transparent;
+    --er-scrollbar-color: #efedd3;
+    --er-scrollbar-color-hover: #faf8ec;
+    --er-scrollbar-color-active: #f3f2ec;
+}
+
+$animations-on: true;

@@ -1,0 +1,26 @@
+html {
+  scroll-behavior: unset;
+}
+
+body {
+  font-family: get-var(font-family), serif;
+  font-size: get-var(font-size);
+  line-height: get-var(line-height);
+  background: get-var(body-background);
+  color: get-var(body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+.browsernotice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 40px;
+}
+
+.error {
+  background: get-var(warning--background);
+  color: get-var(warning--color);
+  padding: 6px 14px;
+}
