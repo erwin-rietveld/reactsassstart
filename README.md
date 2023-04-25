@@ -1,5 +1,7 @@
 # START
 
+Version 0.9 BETA
+
 ## Create Vite project in current directory
 
 - npm create vite@latest . -- --template react-ts
